@@ -1,0 +1,4 @@
+Login credentials: 
+
+Email: admin@email.dog
+Password: password
