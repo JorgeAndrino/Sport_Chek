@@ -1,0 +1,69 @@
+
+@import 'reset';
+@import 'breakpoints';
+@import 'layout';
+@import 'colours';
+@import 'typography';
+@import 'forms';
+@import 'buttons';
+@import 'header';
+@import 'footer';
+
+#app {
+    padding: 90px 0;
+}
+
+#products {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 20px;
+
+    .toProduct{
+        text-decoration: none;
+        color: $black;
+        position: relative;
+
+        &::after {
+            font-family: "Font Awesome 5 Free", Arial;
+            content: "See details \f054";
+            position: absolute;
+            top: 0;
+            display: none;
+            width: 100%;
+            height: 100%;
+            background-color: rgba($teal, 0.5);
+            border-radius: 20px;
+            color: white;
+            font-weight: bold;
+            font-size: 24px;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        &:hover {
+            &::after {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+    }
+
+    .product {
+        display: grid;
+        justify-content: center;
+        text-align: center;
+
+        img {
+            width: 100%
+        }
+    }
+
+    @media screen and ($mobile){
+        grid-template-columns: 1fr 1fr 1fr;          
+    }
+
+    @media screen and ($tablet){
+        grid-template-columns: 1fr 1fr 1fr 1fr;          
+    }
+}

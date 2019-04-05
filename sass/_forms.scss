@@ -1,0 +1,16 @@
+
+.searchBar {
+    display: none;
+    
+    input {
+        padding: 10px 5px;
+    }
+
+    .searchBtn {
+        padding: 12px;
+    }
+
+    @media screen and ($mobile){
+        display: block;                
+    }
+}
