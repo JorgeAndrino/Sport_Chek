@@ -1,0 +1,19 @@
+
+h3 {
+    margin: 5px 0;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.price {
+    margin: 5px 0;
+    color: $red;
+
+    &::before {
+        content: '$';
+    }
+
+    &::after {
+        content: ' CAD';
+    }
+}
