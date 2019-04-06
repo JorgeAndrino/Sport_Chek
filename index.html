@@ -36,92 +36,27 @@
 
     <main id="app">
         <div class="container">
-            <section id="products">
-                <a href="#" class="toProduct">
-                    <div class="product">
-                        <img src="images/products/adidas-kids-copa-zone.png" alt="Product Name">
-                        <h3>Product Name</h3>
-                        <p class="price">420</p>
+            <div class="mainContent">
+
+                <section id="catgoryFilter">
+                    <h3>Filter by category</h3>
+                    <div class="category" v-for="category in categories">
+                        <input type="checkbox" v-bind:value="category.category_id" v-bind:id="'category_id' + category.category_id" /> 
+                        <label v-bind:for="'category_id' + category.category_id">{{category.category_name}}</label>
                     </div>
-                </a>
-                <a href="#" class="toProduct">
-                    <div class="product">
-                        <img src="images/products/adidas-kids-copa-zone.png" alt="Product Name">
-                        <h3>Product Name</h3>
-                        <p class="price">420</p>
-                    </div>
-                </a>
-                <a href="#" class="toProduct">
-                    <div class="product">
-                        <img src="images/products/adidas-kids-copa-zone.png" alt="Product Name">
-                        <h3>Product Name</h3>
-                        <p class="price">420</p>
-                    </div>
-                </a>
-                <a href="#" class="toProduct">
-                    <div class="product">
-                        <img src="images/products/adidas-kids-copa-zone.png" alt="Product Name">
-                        <h3>Product Name</h3>
-                        <p class="price">420</p>
-                    </div>
-                </a>
-                <a href="#" class="toProduct">
-                    <div class="product">
-                        <img src="images/products/adidas-kids-copa-zone.png" alt="Product Name">
-                        <h3>Product Name</h3>
-                        <p class="price">420</p>
-                    </div>
-                </a>
-                <a href="#" class="toProduct">
-                    <div class="product">
-                        <img src="images/products/adidas-kids-copa-zone.png" alt="Product Name">
-                        <h3>Product Name</h3>
-                        <p class="price">420</p>
-                    </div>
-                </a>
-                <a href="#" class="toProduct">
-                    <div class="product">
-                        <img src="images/products/adidas-kids-copa-zone.png" alt="Product Name">
-                        <h3>Product Name</h3>
-                        <p class="price">420</p>
-                    </div>
-                </a>
-                <a href="#" class="toProduct">
-                    <div class="product">
-                        <img src="images/products/adidas-kids-copa-zone.png" alt="Product Name">
-                        <h3>Product Name</h3>
-                        <p class="price">420</p>
-                    </div>
-                </a>
-                <a href="#" class="toProduct">
-                    <div class="product">
-                        <img src="images/products/adidas-kids-copa-zone.png" alt="Product Name">
-                        <h3>Product Name</h3>
-                        <p class="price">420</p>
-                    </div>
-                </a>
-                <a href="#" class="toProduct">
-                    <div class="product">
-                        <img src="images/products/adidas-kids-copa-zone.png" alt="Product Name">
-                        <h3>Product Name</h3>
-                        <p class="price">420</p>
-                    </div>
-                </a>
-                <a href="#" class="toProduct">
-                    <div class="product">
-                        <img src="images/products/adidas-kids-copa-zone.png" alt="Product Name">
-                        <h3>Product Name</h3>
-                        <p class="price">420</p>
-                    </div>
-                </a>
-                <a href="#" class="toProduct">
-                    <div class="product">
-                        <img src="images/products/adidas-kids-copa-zone.png" alt="Product Name">
-                        <h3>Product Name</h3>
-                        <p class="price">420</p>
-                    </div>
-                </a>
-            </section>
+                </section>
+
+                <section id="products">
+                    <a v-bind:href="'product_id' + product.product_id" class="toProduct" v-for="product in products">
+                        <div class="product">
+                            <img v-bind:src="'images/products/' + product.product_image" v-bind:alt="product.product_name">
+                            <h3>{{product.product_name}}</h3>
+                            <p class="price">{{product.product_price}}</p>
+                        </div>
+                    </a>
+                </section>
+
+            </div>
         </div>
     </main>
 
