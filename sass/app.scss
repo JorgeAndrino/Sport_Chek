@@ -16,13 +16,14 @@
     display: grid;
     grid-template-columns: 1fr;
     grid-gap: 30px;
-
+    
     @media screen and ($mobile){
         grid-template-columns: 1fr 4fr;     
     }
 }
 
 #catgoryFilter {
+    height: max-content;
     padding: 20px 10px;
     border-radius: 20px;
     background-color: $teal;
@@ -85,7 +86,7 @@
     }
 
     @media screen and ($mobile){
-        grid-template-columns: 1fr 1fr 1fr;          
+        grid-template-columns: 1fr 1fr;          
     }
 
     @media screen and ($tablet){
