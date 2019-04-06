@@ -114,7 +114,20 @@ export default {
         }
     },
     methods: {
+        getAllData() {      
+            let that = this;    
+            axios.get('admin/read-all.php')
+                .then(function (response) {
+                    //console.log(response); 
+                    that.categories = JSON.parse(response.data[0]);
+                    that.products = JSON.parse(response.data[1]);
+                })
+                .catch(function (error) {
+                    console.log(error);
+            });
+        }
     },
     mounted() {
+        this.getAllData();
     },
 }
