@@ -9,11 +9,10 @@
 @import 'header';
 @import 'footer';
 
-#app {
-    padding: 90px 0;
-}
+// main page
 
 .mainContent {
+    padding: 90px 15px;
     display: grid;
     grid-template-columns: 1fr;
     grid-gap: 30px;
@@ -92,4 +91,26 @@
     @media screen and ($tablet){
         grid-template-columns: 1fr 1fr 1fr 1fr;          
     }
+}
+
+// individual product page
+
+.productContent {
+    padding: 120px 15px;
+    max-width: 765px;
+
+    p {
+        line-height: 24px;
+    }
+}
+
+// 404 page
+
+#page404 {
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 48px;
+    font-weight: bold;
 }
