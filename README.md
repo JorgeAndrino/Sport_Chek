@@ -35,7 +35,6 @@ gulp watch
 ## Built With
 
 * [Font Awesome](https://fontawesome.com/) - Graphic API (icnos);
-* [Materialize](https://materializecss.com/) - CSS library;
 * [Vue.js](https://vuejs.org/) - JavaScript Framework;
 * [PHP](https://www.php.net/);
 * [axios](https://www.npmjs.com/package/axios) - Promise based HTTP client for the browser and node.js (AJAX).
