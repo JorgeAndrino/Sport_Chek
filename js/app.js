@@ -19,13 +19,23 @@ const router = new VueRouter({
 const vm = new Vue({
     data() {
         return {
-            searchRequest: ''
+            searchRequest: '',
+            searchedProducts: []
         }
     },
     methods: {
         filterBySearch() {
             this.$router.push("/");
-            console.log(this.searchRequest);
+            let that = this;    
+            axios.get(`admin/user-search.php?searchRequest=${this.searchRequest}`)
+                .then(function (response) {
+                    //console.log(response); 
+                    that.searchedProducts = response.data;
+                    that.$emit('searchedProducts', that.searchedProducts);
+                })
+                .catch(function (error) {
+                    console.log(error);
+            });
         }
     },
     components: {

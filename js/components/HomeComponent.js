@@ -65,6 +65,10 @@ export default {
         }
     },
     mounted() {
+        console.log("howl u doing - m");
         this.getAllData();
     },
+    beforeUpdate() {
+        console.log("howl u doing - bu");
+    }
 }
