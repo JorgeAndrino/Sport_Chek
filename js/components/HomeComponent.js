@@ -8,7 +8,7 @@ export default {
             <section id="catgoryFilter">
                 <h3>Filter by category</h3>
                 <div class="category" v-for="category in categories">
-                    <input type="checkbox" v-bind:value="category.category_id" v-bind:id="'category_id' + category.category_id" /> 
+                    <input type="checkbox" v-bind:value="category.category_id" v-bind:id="'category_id' + category.category_id" v-on:click="filterByCategory" /> 
                     <label v-bind:for="'category_id' + category.category_id">{{category.category_name}}</label>
                 </div>
             </section>
@@ -28,7 +28,8 @@ export default {
     data() {
         return {
             categories: [],
-            products: []
+            products: [],
+            filters: []
         }
     },
     methods: {
@@ -39,6 +40,19 @@ export default {
                     //console.log(response); 
                     that.categories = JSON.parse(response.data[0]);
                     that.products = JSON.parse(response.data[1]);
+                })
+                .catch(function (error) {
+                    console.log(error);
+            });
+        },
+        filterByCategory(e) {
+            this.filters.push(e.target.value);
+            let that = this;
+            
+            axios.get(`admin/filter-category.php?categories=${this.filters}`)
+                .then(function (response) {
+                    //console.log(response); 
+                    that.products = JSON.parse(response.data);
                 })
                 .catch(function (error) {
                     console.log(error);

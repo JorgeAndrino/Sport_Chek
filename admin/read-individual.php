@@ -9,7 +9,7 @@ function readIndividualProduct($product_id) {
     if (isset($product_id)){
         $get_individual_product = 
         '
-        SELECT DISTINCT
+        SELECT
             p.product_id,
             p.product_image,
             p.product_name,
