@@ -48,11 +48,16 @@ export default {
         filterByCategory(e) {
             this.filters.push(e.target.value);
             let that = this;
+
+            let filtersPrepared = '';
+            that.filters.forEach(function(filter) {
+                filtersPrepared += 'categories[]=' + filter + '&';
+            });
             
-            axios.get(`admin/filter-category.php?categories=${this.filters}`)
+            axios.get(`admin/filter-category.php?${filtersPrepared}`)
                 .then(function (response) {
-                    //console.log(response); 
-                    that.products = JSON.parse(response.data);
+                    console.log(response.data); 
+                    that.products = response.data;
                 })
                 .catch(function (error) {
                     console.log(error);

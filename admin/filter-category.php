@@ -28,7 +28,7 @@ function filterByCategory($categories){
             $get_filtered_products .= ' OR pc.category_id = :category' . $i;
         }
 
-        //echo $get_filtered_products; die();
+        $get_filtered_products .=  ' GROUP BY p.product_id';
 
         $get_products_set = $pdo->prepare($get_filtered_products);
 
