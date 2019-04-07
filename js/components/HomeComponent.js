@@ -65,10 +65,9 @@ export default {
         }
     },
     mounted() {
-        console.log("howl u doing - m");
+        this.$root.$on('searchedProducts', (searchedProducts) => {
+            this.products = searchedProducts;
+        });
         this.getAllData();
-    },
-    beforeUpdate() {
-        console.log("howl u doing - bu");
     }
 }
