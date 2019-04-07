@@ -33,8 +33,8 @@
                         <a href="index.html"><img src="images/sport_check_logo.png" alt="Sport Check logo" width="150"></a>
                     </div>
                     <div class="searchBar">
-                        <input type="text" name="search" placeholder="Search..."/>
-                        <button class="searchBtn"><i class="fas fa-search"></i></button>
+                        <input type="text" name="search" placeholder="Search..." v-model="searchRequest" />
+                        <button class="searchBtn" v-on:click="filterBySearch"><i class="fas fa-search"></i></button>
                     </div>
                 </div>
             </section>

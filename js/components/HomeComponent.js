@@ -56,7 +56,7 @@ export default {
             
             axios.get(`admin/filter-category.php?${filtersPrepared}`)
                 .then(function (response) {
-                    console.log(response.data); 
+                    //console.log(response); 
                     that.products = response.data;
                 })
                 .catch(function (error) {

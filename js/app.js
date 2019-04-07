@@ -17,9 +17,16 @@ const router = new VueRouter({
 });
 
 const vm = new Vue({
-    data: {
+    data() {
+        return {
+            searchRequest: ''
+        }
     },
     methods: {
+        filterBySearch() {
+            this.$router.push("/");
+            console.log(this.searchRequest);
+        }
     },
     components: {
     },
