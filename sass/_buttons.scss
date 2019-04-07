@@ -4,3 +4,15 @@
     color: $white;
     border: none;
 }
+
+.btn {
+    margin: 10px 5px;
+    background-color: $teal;
+    color: $white;
+    text-transform: uppercase;
+    font-weight: bold;
+    border: none;
+    padding: 15px;
+    cursor: pointer;
+    width: max-content;
+}

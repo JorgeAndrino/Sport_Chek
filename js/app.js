@@ -3,11 +3,13 @@
 import HomeComponent from './components/HomeComponent.js'; 
 import NotFoundComponent from './components/NotFoundComponent.js';
 import IndividualProduct from './components/IndividualProduct.js';
+import LoginComponent from './components/auth/LoginComponent.js';
 
 // routes
 const routes = [
     { path: '/', name: "home", component: HomeComponent },
     { path: '/product_id:id', name: "product", component: IndividualProduct },
+    { path: '/login', name: "login", component: LoginComponent },
     { path: "/404*", name: "notfound", component: NotFoundComponent },
     { path: "*", redirect: '/404' }
 ];
