@@ -8,7 +8,7 @@ export default {
             <section id="mainAdminBar" v-if="authenficated">
                 <p class="welcome">Hello, {{userName}}</p>
                 <div>
-                    <router-link to="newproduct"><button class="btn">Add new product</button></router-link>
+                    <router-link to="add-product"><button class="btn">Add new product</button></router-link>
                     <button class="btn" v-on:click="logout">Log out</button>
                 </div>          
             </section>
@@ -118,7 +118,7 @@ export default {
                     data: sessionInfo
                     })
                 .then(function (response) {
-                    console.log(response);
+                    //console.log(response);
                     localStorage.clear();
                     that.$router.go();
                 })

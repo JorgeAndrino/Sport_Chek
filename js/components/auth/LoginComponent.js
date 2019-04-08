@@ -6,9 +6,9 @@ export default {
         <div class="container loginContent">
             <div id="loginForm">
                 <label for="user_email">Email: *</label>
-                <input type="email" name="user_email" id="user_email" v-model="user_email">
+                <input type="email" name="user_email" id="user_email" v-model="user_email" required>
                 <label for="user_password">Password: *</label>
-                <input type="password" name="user_password" id="user_password" v-model="user_password">
+                <input type="password" name="user_password" id="user_password" v-model="user_password" required>
                 <button class="btn" v-on:click="login">Login</button>
                 <p v-if="message">{{message}}</p>
             </div>

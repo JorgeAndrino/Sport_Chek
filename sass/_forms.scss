@@ -1,4 +1,17 @@
 
+input, label, textarea, select {
+    margin: 5px 0;
+}
+
+label {
+    font-weight: bold;
+}
+
+input, textarea, select {
+    padding: 5px 7px;
+    border: 2px $teal solid;
+}
+
 .searchBar {
     display: none;
     

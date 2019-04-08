@@ -115,6 +115,10 @@
     p {
         line-height: 24px;
     }
+
+    img {
+        width: 100%;
+    }
 }
 
 // login page
@@ -126,19 +130,16 @@
     justify-content: center;
     max-width: 500px;
     margin: 0 auto;
+}
 
-    input, label {
-        margin: 5px 0;
-    }
+// add product page
 
-    label {
-        font-weight: bold;
-    }
-
-    input {
-        padding: 5px 7px;
-        border: 2px $teal solid;
-    }
+.addProduct {
+    display: flex;
+    flex-direction: column;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 120px 15px;
 }
 
 // 404 page

@@ -2,14 +2,16 @@
 // components 
 import HomeComponent from './components/HomeComponent.js'; 
 import NotFoundComponent from './components/NotFoundComponent.js';
-import IndividualProduct from './components/IndividualProduct.js';
+import IndividualProductComponent from './components/IndividualProductComponent.js';
 import LoginComponent from './components/auth/LoginComponent.js';
+import AddProductComponent from './components/AddProductComponent.js';
 
 // routes
 const routes = [
     { path: '/', name: "home", component: HomeComponent },
-    { path: '/product_id:id', name: "product", component: IndividualProduct },
+    { path: '/product_id:id', name: "product", component: IndividualProductComponent },
     { path: '/login', name: "login", component: LoginComponent },
+    { path: '/add-product', name: "add-product", component: AddProductComponent },
     { path: "/404*", name: "notfound", component: NotFoundComponent },
     { path: "*", redirect: '/404' }
 ];
