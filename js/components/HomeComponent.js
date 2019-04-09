@@ -5,7 +5,7 @@ export default {
     `
         <div class="container mainContent">
 
-            <section id="mainAdminBar" v-if="authenficated">
+            <section id="mainAdminBar" v-if="authenticated">
                 <p class="welcome">Hello, {{userName}}</p>
                 <div>
                     <router-link to="add-product"><button class="btn">Add new product</button></router-link>
@@ -36,7 +36,7 @@ export default {
     `,
     data() {
         return {
-            authenficated: false,
+            authenticated: false,
             userName: '',
             categories: [],
             products: [],
@@ -88,18 +88,18 @@ export default {
                 url: 'admin/auth/session.php',
                 data: sessionInfo
                 })
-              .then(function (response) {
-                //console.log(response);
-                if(response.data) {
-                    that.authenficated = true;
-                    that.userName = localStorage.getItem('current_user_name');
-                } else {
-                    localStorage.clear();
-                }
-              })
-              .catch(function (error) {
-                console.log(error);
-              });
+                .then(function (response) {
+                    //console.log(response);
+                    if(response.data) {
+                        that.authenticated = true;
+                        that.userName = localStorage.getItem('current_user_name');
+                    } else {
+                        localStorage.clear();
+                    }
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
         },
         logout() {
             if(localStorage.getItem('current_user_id') && localStorage.getItem('access_token')) {
@@ -127,7 +127,7 @@ export default {
                 });
 
             } else {
-                this.authenficated = true;
+                this.authenticated = true;
                 localStorage.clear();
                 this.$router.go();
             }

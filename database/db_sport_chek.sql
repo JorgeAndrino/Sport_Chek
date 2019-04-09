@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Apr 08, 2019 at 06:07 PM
+-- Generation Time: Apr 09, 2019 at 09:00 PM
 -- Server version: 5.7.21
 -- PHP Version: 7.2.4
 
@@ -181,6 +181,7 @@ CREATE TABLE IF NOT EXISTS `tbl_users` (
   `user_fname` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
   `user_email` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `user_password` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `access_token` varchar(11) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`user_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -188,8 +189,8 @@ CREATE TABLE IF NOT EXISTS `tbl_users` (
 -- Dumping data for table `tbl_users`
 --
 
-INSERT INTO `tbl_users` (`user_id`, `user_fname`, `user_email`, `user_password`) VALUES
-(1, 'Jesus', 'admin@email.dog', 'password');
+INSERT INTO `tbl_users` (`user_id`, `user_fname`, `user_email`, `user_password`, `access_token`) VALUES
+(1, 'Jesus', 'admin@email.dog', 'password', '9%ma##??TL');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

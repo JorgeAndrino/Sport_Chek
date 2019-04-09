@@ -28,7 +28,7 @@ export default {
                     <option v-bind:value="category.category_id" v-for="category in categories">{{category.category_name}}</option>
                 </select>
 
-                <button v-on:click="addProduct" class="btn">Submit</button>
+                <button v-on:click="addProduct" class="btn" rows="10">Submit</button>
             </form>
         </div>
     `,
@@ -38,6 +38,36 @@ export default {
         }
     },
     methods: {
+        checkSession() {
+            if(localStorage.getItem('current_user_id') && localStorage.getItem('access_token')) {
+                
+                let that = this;
+
+                // create form data to do a POST request
+                let sessionInfo = new FormData();
+
+                sessionInfo.append("user_id", localStorage.getItem('current_user_id'));
+                sessionInfo.append("access_token", localStorage.getItem('access_token'));
+
+                axios({
+                    method: 'post',
+                    url: 'admin/auth/session.php',
+                    data: sessionInfo
+                    })
+                    .then(function (response) {
+                        //console.log(response);
+                        if(!response.data) {
+                            that.$router.push("/login");
+                        }
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+            } else {
+                localStorage.clear();
+                this.$router.push("/login");
+            }
+        },
         getCategories() {
             let that = this;    
             axios.get('admin/read-all.php')
@@ -54,6 +84,7 @@ export default {
         }
     },
     mounted() {
+        this.checkSession();
         this.getCategories();
     },
 }

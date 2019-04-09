@@ -5,6 +5,7 @@ import NotFoundComponent from './components/NotFoundComponent.js';
 import IndividualProductComponent from './components/IndividualProductComponent.js';
 import LoginComponent from './components/auth/LoginComponent.js';
 import AddProductComponent from './components/AddProductComponent.js';
+import EditProductComponent from './components/EditProductComponent.js';
 
 // routes
 const routes = [
@@ -12,6 +13,7 @@ const routes = [
     { path: '/product_id:id', name: "product", component: IndividualProductComponent },
     { path: '/login', name: "login", component: LoginComponent },
     { path: '/add-product', name: "add-product", component: AddProductComponent },
+    { path: '/edit-product_id:id', name: "edit-product", component: EditProductComponent },
     { path: "/404*", name: "notfound", component: NotFoundComponent },
     { path: "*", redirect: '/404' }
 ];
