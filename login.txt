@@ -1,4 +1,11 @@
 Login credentials: 
 
+Admin 1:
+
 Email: admin@email.dog
+Password: password
+
+Admin 2:
+
+Email: jordano@email.cat
 Password: password

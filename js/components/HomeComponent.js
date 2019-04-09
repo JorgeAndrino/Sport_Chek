@@ -5,12 +5,21 @@ export default {
     `
         <div class="container mainContent">
 
+            <section id="mainAdminBar" v-if="authenticated">
+                <p class="welcome">Hello, {{userName}}</p>
+                <div>
+                    <router-link to="add-product"><button class="btn">Add new product</button></router-link>
+                    <button class="btn" v-on:click="logout">Log out</button>
+                </div>          
+            </section>
+
             <section id="catgoryFilter">
                 <h3>Filter by category</h3>
                 <div class="category" v-for="category in categories">
                     <input type="checkbox" v-bind:value="category.category_id" v-bind:id="'category_id' + category.category_id" v-on:click="filterByCategory" /> 
                     <label v-bind:for="'category_id' + category.category_id">{{category.category_name}}</label>
                 </div>
+                <button class="btn" v-on:click="dropFilter">Drop filter</button>
             </section>
 
             <section id="products">
@@ -27,6 +36,8 @@ export default {
     `,
     data() {
         return {
+            authenticated: false,
+            userName: '',
             categories: [],
             products: [],
             filters: []
@@ -62,6 +73,67 @@ export default {
                 .catch(function (error) {
                     console.log(error);
             });
+        },
+        checkSession() {
+            let that = this;
+
+            // create form data to do a POST request
+            let sessionInfo = new FormData();
+
+            sessionInfo.append("user_id", localStorage.getItem('current_user_id'));
+            sessionInfo.append("access_token", localStorage.getItem('access_token'));
+
+            axios({
+                method: 'post',
+                url: 'admin/auth/session.php',
+                data: sessionInfo
+                })
+                .then(function (response) {
+                    //console.log(response);
+                    if(response.data) {
+                        that.authenticated = true;
+                        that.userName = localStorage.getItem('current_user_name');
+                    } else {
+                        localStorage.clear();
+                    }
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        },
+        logout() {
+            if(localStorage.getItem('current_user_id') && localStorage.getItem('access_token')) {
+
+                let that = this;
+
+                // create form data to do a POST request
+                let sessionInfo = new FormData();
+
+                sessionInfo.append("user_id", localStorage.getItem('current_user_id'));
+                sessionInfo.append("access_token", localStorage.getItem('access_token'));
+
+                axios({
+                    method: 'post',
+                    url: 'admin/auth/logout.php',
+                    data: sessionInfo
+                    })
+                .then(function (response) {
+                    //console.log(response);
+                    localStorage.clear();
+                    that.$router.go();
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+
+            } else {
+                this.authenticated = true;
+                localStorage.clear();
+                this.$router.go();
+            }
+        },
+        dropFilter() {
+            this.$router.go();
         }
     },
     mounted() {
@@ -69,5 +141,8 @@ export default {
             this.products = searchedProducts;
         });
         this.getAllData();
+        if(localStorage.getItem('current_user_id') && localStorage.getItem('access_token')) {
+            this.checkSession();
+        }
     }
 }
