@@ -1,7 +1,16 @@
 # Sport Chek
 
-Сustom CMS topower a products/products details site for Sports Chek (https://www.sportchek.ca/). 
+Сustom CMS to power a products details site for Sports Chek (https://www.sportchek.ca/). 
 It also has additional features such as filtering and search.
+
+## Features
+
+Here's a list of features of functionality and instructions on how to address them:
+
+* filtering and search bar on the main page;
+* authentication - go to `/login` to log into admins account. You will find login credentials in the login form or in the `login.txt` file. Admin-specific pages and functionality is protected;
+* add a new product - after you successfully log into admins account you should see admin bar on the main page - follow the “Add new product” button; 
+* edit or delete a product - log into admins account and click on any product on the main page. On the products page you should see two buttons: “Edit” and “Delete”.
 
 ## Getting Started
 
