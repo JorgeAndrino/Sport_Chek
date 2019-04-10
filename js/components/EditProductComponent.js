@@ -111,7 +111,7 @@ export default {
             this.newCategory = true;
         },
         editProduct() {
-            //this.$router.push("/product_id" + this.product.product_id);
+            this.$router.push("/product_id" + this.product.product_id);
         }
     },
     mounted() {

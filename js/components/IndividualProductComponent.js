@@ -10,6 +10,7 @@ export default {
             <p class="notinstock" v-if="product.product_available != 1">Sorry, this product is not available for order right now...</p>
             <p>{{product.product_description}}</p>
             <router-link v-bind:to="'edit-product_id' + product.product_id" v-bind:key="product.product_id" v-if="authenticated"><button class="btn">Edit</button></router-link>
+            <button class="btn" v-on:click="deleteProduct">Delete</button>
         </div>
     `,
     data() {
@@ -51,6 +52,28 @@ export default {
                     } else {
                         localStorage.clear();
                     }
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        },
+        deleteProduct() {
+
+            let that = this;
+
+            // create form data to do a POST request
+            let deleteQuery = new FormData();
+
+            deleteQuery.append("product_id", this.product.product_id);
+
+            axios({
+                method: 'post',
+                url: 'admin/delete-product.php',
+                data: deleteQuery
+                })
+                .then(function (response) {
+                    //console.log(response);
+                    that.$router.push("/");
                 })
                 .catch(function (error) {
                     console.log(error);
