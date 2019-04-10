@@ -36,17 +36,22 @@ export default {
                 url: 'admin/auth/login.php',
                 data: loginCredentials
                 })
-              .then(function (response) {
-                //console.log(response);
-                that.message = response.data[0];
-                localStorage.setItem('current_user_id', response.data[1]);
-                localStorage.setItem('current_user_name', response.data[2]);
-                localStorage.setItem('access_token', response.data[3]);
-                that.$router.push("/");
-              })
-              .catch(function (error) {
-                console.log(error);
-              });
+                .then(function (response) {
+                    //console.log(response);
+                    
+                    if(response.data[0] == "Welcome!") {
+                        that.message = response.data[0];
+                        localStorage.setItem('current_user_id', response.data[1]);
+                        localStorage.setItem('current_user_name', response.data[2]);
+                        localStorage.setItem('access_token', response.data[3]);
+                        that.$router.push("/");
+                    } else {
+                        that.message = response.data;
+                    }
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
         },
         checkSession() {
             let that = this;
